@@ -102,14 +102,10 @@ Keep `seed_options`, `ns_options` and `min_samples_per_class` unchanged to repro
 All commands below are run from the repository root.
 
 ### Download models
-
-> **TODO:** describe how to obtain the backbone weights and where to place them (`models_dir`).
-
-- ResNet: _TODO_
-- DINOv2: _TODO_
-- DINOv3: _TODO_
-- CLIP: _TODO_
-
+```
+# Model weights
+aws s3 sync s3://fsc-benthic-imagery/models/ ./models/ --no-sign-request
+```
 ### Download data
 
 The experiments run on object crops cut from the annotated images. You can get them in two ways:
@@ -119,15 +115,24 @@ The experiments run on object crops cut from the annotated images. You can get t
 
 | Dataset | Name in the paper | Original source |
 |---|---|---|
-| `18167` | Dataset A | _TODO_ |
-| `18290` | Dataset B | _TODO_ |
-| `16817` | Dataset C | _TODO_ |
+| `18167` | Dataset A | https://squidle.org/geodata/annotation_set/18167 |
+| `18290` | Dataset B | https://squidle.org/geodata/annotation_set/18290 |
+| `16817` | Dataset C | https://squidle.org/geodata/annotation_set/16817 |
 
 `16817` is used with several patch sizes (`16817_0_01`, `16817_0_02`, `16817_0_03`, `16817_0_04`, `16817_0_05`, `16817_0_1`, `16817_0_15`). Each patch size is a separate dataset folder. `16817_0_05` is the default in experiments 1–4 and 6.
 
 #### Option A: download the pre-processed crops (recommended)
 
-Download the formatted dataset from **_TODO: add download link_** and extract it. It contains two parts:
+Download the formatted dataset from and extract it. It contains two parts:
+```
+# COCO annotations and datasets
+
+aws s3 sync s3://fsc-benthic-imagery/SQ_datasets/ ./SQ_datasets/ --no-sign-request
+
+# Preprocessed object crops
+
+aws s3 sync s3://fsc-benthic-imagery/scratch_space/ ./scratch_space/ --no-sign-request
+```
 
 1. The COCO annotation files. Place them under `INPUT_DIR`.
 2. The cropped objects. Place them under `scratch_dir`.
