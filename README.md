@@ -48,8 +48,8 @@ results_papers/         logs of the results reported in the paper
 1. Clone the repository and move into it:
 
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/Elkholy2021/FSC_benthic_imagery.git
+   cd FSC_benthic_imagery
    ```
 
 2. Create the conda environment (named `FSCBI`) from `environment.yml` and activate it:
